@@ -1,0 +1,8 @@
+package com.ezcloud.tellermesh.corebanking.domain;
+
+public class NotFoundException extends RuntimeException {
+
+    public NotFoundException(String what, String id) {
+        super(what + " not found: " + id);
+    }
+}

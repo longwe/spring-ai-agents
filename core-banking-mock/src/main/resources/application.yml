@@ -5,7 +5,7 @@ spring:
   application:
     name: core-banking-mock
   datasource:
-    url: ${CORE_DB_URL:jdbc:postgresql://localhost:5432/corebanking}
+    url: ${CORE_DB_URL:jdbc:postgresql://localhost:5433/corebanking}
     username: ${CORE_DB_USER:tellermesh}
     password: ${CORE_DB_PASSWORD:tellermesh}
   mvc:

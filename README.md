@@ -45,7 +45,7 @@ Run only the mock against a throwaway database, no compose needed:
 | Core banking mock | http://localhost:8090/api | none (internal service) |
 | Keycloak admin | http://localhost:8180/admin | `admin` / `admin` |
 | Keycloak realm | `tellermesh` | `alice` / `alice-dev-pass`, `bob` / `bob-dev-pass` |
-| Postgres | localhost:5432 | `tellermesh` / `tellermesh` (DBs `corebanking`, `tellermesh`) |
+| Postgres | localhost:5433 (override with `POSTGRES_PORT`) | `tellermesh` / `tellermesh` (DBs `corebanking`, `tellermesh`) |
 | Redis | localhost:6379 | none |
 | Ollama (profile `llm`) | http://localhost:11434 | none |
 

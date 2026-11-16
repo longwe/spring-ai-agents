@@ -22,7 +22,7 @@ public class AgentGatewayApplication {
     CommandLineRunner helloModel(ChatClient chatClient) {
         return args -> {
             var reply = chatClient.prompt()
-                    .user("Say hello in one sentence")
+                    .user("What's the balance of account acc-1001-chk?")
                     .call()
                     .content();
             log.info("Model reply: {}", reply);

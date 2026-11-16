@@ -1,11 +1,12 @@
 package com.ezcloud.tellermesh.gateway.config;
 
+import com.ezcloud.tellermesh.gateway.tools.AccountTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class    ChatClientConfig {
+public class ChatClientConfig {
 
     static final String SYSTEM_PROMPT = """
             You are TellerMesh, a retail banking assistant.
@@ -15,9 +16,10 @@ public class    ChatClientConfig {
 
     // Tools (step 2-3) and chat memory (step 4) are attached here via defaultTools/defaultAdvisors.
     @Bean
-    ChatClient chatClient(ChatClient.Builder builder) {
+    ChatClient chatClient(ChatClient.Builder builder, AccountTools accountTools) {
         return builder
                 .defaultSystem(SYSTEM_PROMPT)
+                .defaultTools(accountTools)
                 .build();
     }
 }

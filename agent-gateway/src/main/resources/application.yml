@@ -4,6 +4,9 @@ server:
 spring:
   application:
     name: agent-gateway
+  mvc:
+    problemdetails:
+      enabled: true
   ai:
     anthropic:
       # Never put the key here; export ANTHROPIC_API_KEY in your shell.

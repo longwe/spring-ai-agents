@@ -3,6 +3,7 @@ package com.ezcloud.tellermesh.gateway.chat;
 import java.util.Optional;
 import java.util.UUID;
 
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
@@ -23,7 +24,7 @@ public class ChatController {
     }
 
     @PostMapping("/chat")
-    public ChatReply chat(@RequestBody ChatRequest request) {
+    public ChatReply chat(@Valid @RequestBody ChatRequest request) {
         var conversationId = Optional.ofNullable(request.conversationId())
                 .filter(id -> !id.isBlank())
                 .orElseGet(() -> UUID.randomUUID().toString());

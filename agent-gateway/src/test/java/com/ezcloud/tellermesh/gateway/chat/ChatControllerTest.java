@@ -103,7 +103,8 @@ class ChatControllerTest {
                                 {"message": "   "}
                                 """))
                 .andExpect(status().isBadRequest())
-                .andExpect(jsonPath("$.status", is(400)));
+                .andExpect(jsonPath("$.status", is(400)))
+                .andExpect(jsonPath("$.detail", is("message: must not be blank")));
 
         verifyNoInteractions(chatClient);
     }
@@ -115,7 +116,8 @@ class ChatControllerTest {
                         .content("""
                                 {"conversationId": "conv-42"}
                                 """))
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.detail", is("message: must not be blank")));
     }
 
     /** Runs the advisor customizer the controller passed, against a mock spec, and checks the param. */

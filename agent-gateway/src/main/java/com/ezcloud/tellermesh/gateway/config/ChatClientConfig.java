@@ -1,5 +1,7 @@
 package com.ezcloud.tellermesh.gateway.config;
 
+import java.time.Clock;
+
 import com.ezcloud.tellermesh.gateway.tools.AccountTools;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +22,7 @@ public class ChatClientConfig {
         return builder
                 .defaultSystem(SYSTEM_PROMPT)
                 .defaultTools(accountTools)
+                .defaultAdvisors(new CurrentDateAdvisor(Clock.systemDefaultZone()))
                 .build();
     }
 }

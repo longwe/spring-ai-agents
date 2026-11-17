@@ -1,5 +1,6 @@
 package com.ezcloud.tellermesh.gateway;
 
+import com.ezcloud.tellermesh.gateway.chat.ChatReplies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
@@ -22,10 +23,12 @@ public class AgentGatewayApplication {
     CommandLineRunner helloModel(ChatClient chatClient) {
         return args -> {
             var reply = chatClient.prompt()
-                    .user("What's the balance of account acc-1001-chk?")
+                    //.user("Show me the last 5 transactions on acc-1001-chk?")
+                   // .user("How much did I spend on acc-1001-chk in the last 30 days?")
+                    .user("Show transactions for acc-9999")
                     .call()
-                    .content();
-            log.info("Model reply: {}", reply);
+                    .chatResponse();
+            log.info("Model reply: {}", ChatReplies.text(reply));
         };
     }
 }
